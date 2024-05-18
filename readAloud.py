@@ -60,63 +60,67 @@ if __name__ == "__main__":
  
 	say("大声朗读已开启")
  
-	while True:
-		if keyboard.is_pressed("Alt+Shift+A"):
-			paste_bk = pyperclip.paste()
-			# copy current selected text
-			keyboard.release("Alt+Shift+A")
-			keyboard.press("Ctrl+c")
-			keyboard.release("Ctrl+c")
-			time.sleep(0.1)
-			text = pyperclip.paste()
-			pyperclip.copy(paste_bk)
-			if speaking:
-				stop_speaker()
-				say(text)
-			if not speaking:
-				say(text)
-    
-		elif keyboard.is_pressed("Alt+Shift+S"):
-			if speaking:
-				stop_speaker()
-    
-		elif keyboard.is_pressed("Alt+Shift+="):
-			volume = min(volume + 0.1, 1.0)
-			if speaking:
-				stop_speaker()
-				say("测试音量")
-			if not speaking:
-				say("测试音量")
-
-		elif keyboard.is_pressed("Alt+Shift+-"):
-			volume = max(volume - 0.1, 0.0)
-			if speaking:
-				stop_speaker()
-				say("测试音量")
-			if not speaking:
-				say("测试音量")
-
-		elif keyboard.is_pressed("Alt+Shift+]"):
-			rate += 50
-			if speaking:
-				stop_speaker()
-				say("测试语速")
-			if not speaking:
-				say("测试语速")
-
-		elif keyboard.is_pressed("Alt+Shift+["):
-			rate = max(rate - 50, 0)
-			if speaking:
-				stop_speaker()
-				say("测试语速")
-			if not speaking:
-				say("测试语速")
-    
-		elif keyboard.is_pressed("Alt+Shift+Q"):
-			if speaking:
-				stop_speaker()
-			say("正在退出大声朗读")
-			engine.stop()
-			break
+	try :
+		while True:
+			if keyboard.is_pressed("Alt+Shift+A"):
+				paste_bk = pyperclip.paste()
+				# copy current selected text
+				keyboard.release("Alt+Shift+A")
+				keyboard.press("Ctrl+c")
+				keyboard.release("Ctrl+c")
+				time.sleep(0.1)
+				text = pyperclip.paste()
+				pyperclip.copy(paste_bk)
+				if speaking:
+					stop_speaker()
+					say(text)
+				if not speaking:
+					say(text)
 		
-		time.sleep(0.1)
+			elif keyboard.is_pressed("Alt+Shift+S"):
+				if speaking:
+					stop_speaker()
+		
+			elif keyboard.is_pressed("Alt+Shift+="):
+				volume = min(volume + 0.1, 1.0)
+				if speaking:
+					stop_speaker()
+					say("测试音量")
+				if not speaking:
+					say("测试音量")
+
+			elif keyboard.is_pressed("Alt+Shift+-"):
+				volume = max(volume - 0.1, 0.0)
+				if speaking:
+					stop_speaker()
+					say("测试音量")
+				if not speaking:
+					say("测试音量")
+
+			elif keyboard.is_pressed("Alt+Shift+]"):
+				rate += 50
+				if speaking:
+					stop_speaker()
+					say("测试语速")
+				if not speaking:
+					say("测试语速")
+
+			elif keyboard.is_pressed("Alt+Shift+["):
+				rate = max(rate - 50, 0)
+				if speaking:
+					stop_speaker()
+					say("测试语速")
+				if not speaking:
+					say("测试语速")
+		
+			elif keyboard.is_pressed("Alt+Shift+Q"):
+				break
+			
+			time.sleep(0.1)
+   
+	finally:
+		if speaking:
+			stop_speaker()
+		say("正在退出大声朗读")
+		engine.stop()
+    
