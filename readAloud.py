@@ -78,7 +78,7 @@ if __name__ == "__main__":
 				stop_speaker()
     
 		elif keyboard.is_pressed("Alt+Shift+="):
-			volume += 0.1
+			volume = min(volume + 0.1, 1.0)
 			if speaking:
 				stop_speaker()
 				say("测试音量")
@@ -86,7 +86,7 @@ if __name__ == "__main__":
 				say("测试音量")
 
 		elif keyboard.is_pressed("Alt+Shift+-"):
-			volume -= 0.1 if volume >= 0.2 else volume
+			volume = max(volume - 0.1, 0.0)
 			if speaking:
 				stop_speaker()
 				say("测试音量")
@@ -102,7 +102,7 @@ if __name__ == "__main__":
 				say("测试语速")
 
 		elif keyboard.is_pressed("Alt+Shift+["):
-			rate -= 50 if rate >= 50 else rate
+			rate = max(rate - 50, 0)
 			if speaking:
 				stop_speaker()
 				say("测试语速")
@@ -112,6 +112,7 @@ if __name__ == "__main__":
 		elif keyboard.is_pressed("Alt+Shift+Q"):
 			if speaking:
 				stop_speaker()
+			say("正在退出大声朗读")
 			engine.stop()
 			break
 		
