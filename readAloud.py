@@ -57,6 +57,9 @@ volume, rate = 1.0, 250
 
 if __name__ == "__main__":
 	multiprocessing.freeze_support()
+ 
+	say("大声朗读已开启")
+ 
 	while True:
 		if keyboard.is_pressed("Alt+Shift+A"):
 			paste_bk = pyperclip.paste()
