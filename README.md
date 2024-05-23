@@ -1,6 +1,6 @@
 # ReadAloud
 
-A simple implement of readAloud. Just select text you want to read and press `Ctrl`+`Alt`+`A`.
+A simple implement of readAloud. Just select text you want to read and press `Shift`+`Alt`+`A`.
 
 ## Keyboard Shortcuts
 `Shift`+`Alt`+`A`: Read the selected text.
