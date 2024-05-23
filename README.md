@@ -11,7 +11,7 @@ A simple implement of readAloud. Just select text you want to read and press `Ct
 
 `Ctrl`+`Alt`+`-`: Turn down the volume.
 
-`Ctrl`+`Alt`+`]`: increase speech rate.
+`Ctrl`+`Alt`+`]`: Increase speech rate.
 
-`Ctrl`+`Alt`+`[`: decrease speech rate.
+`Ctrl`+`Alt`+`[`: Decrease speech rate.
 
